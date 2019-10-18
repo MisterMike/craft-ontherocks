@@ -1,6 +1,11 @@
-.env
+.env*
 /.idea
+.vagrant
 /node_modules
+/storage
+!/storage/backups
+/sql
 /vendor
 /web/images/**/_*
+/web/amazon*
 .DS_Store

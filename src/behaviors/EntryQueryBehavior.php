@@ -60,6 +60,9 @@ class EntryQueryBehavior extends Behavior
         return $this->owner;
     }
 
+    /* 
+    * 
+    */
     public function onAfterPrepare()
     {
         if ($this->ingredientId) {

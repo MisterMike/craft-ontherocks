@@ -5,11 +5,11 @@
 {% endif %}
 
 {% block title -%}
-    Login | {{ parent() }}
+    {{'page_title_login'|t}} | {{ parent() }}
 {%- endblock %}
 
 {% block heading -%}
-    Login to your account
+    {{'page_heading_login'|t}}
 {%- endblock %}
 
 {% block form %}
@@ -18,18 +18,18 @@
 
     <div class="mb-6">
         {% include '_includes/text' with {
-            label: 'Username or Email',
+            label: '{{"login_form_username"|t}}',
             name: 'loginName',
             value: craft.app.user.getRememberedUsername()
         } %}
     </div>
     <div class="mb-6">
         {% include '_includes/text' with {
-            label: 'Password',
+            label: '{{"login_form_password"|t}}',
             name: 'password',
             type: 'password'
         } %}
     </div>
-    <button class="submit-btn" type="submit">Login</button>
+    <button class="submit-btn" type="submit">{{'login_form_submit'|t}}</button>
 {% endblock %}
 

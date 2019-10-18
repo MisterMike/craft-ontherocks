@@ -2,7 +2,7 @@
 
 {% set page = 'recipes' %}
 {% block title -%}
-    Recipes | {{ parent() }}
+    {{'page_title_index'|t}} | {{ parent() }}
 {%- endblock %}
 
 {% set searchQuery = craft.app.request.getQueryParam('search') %}
@@ -26,12 +26,12 @@
             <div class="container mx-auto px-6">
                 <div class="md:flex -mx-4">
                     <div class="mb-1 md:mb-0 px-4 w-full md:w-1/2 lg:w-2/3">
-                        <input id="search" class="text-input" type="text" placeholder="Search by keyword" value="{{ searchQuery }}">
+                        <input id="search" class="text-input" type="text" placeholder="{{'search_field_placeholder'|t}}" value="{{ searchQuery }}">
                     </div>
                     <div class="w-full md:w-1/2 lg:w-1/3 px-4">
                         <div class="relative w-full">
                             <select id="ingredient-filter" class="block appearance-none w-full bg-white border border-grey-light hover:border-grey py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="">Filter by ingredient…</option>
+                                <option value="">{{'search_ingredient_select'|t}}</option>
                                 {% for ingredient in ingredients %}
                                     <option value="{{ ingredient.slug }}" {% if ingredient.slug == ingredientSlug %}selected{% endif %}>{{ ingredient.title }}</option>
                                 {% endfor %}

@@ -40,6 +40,7 @@ use yii\base\Event;
 class Module extends \yii\base\Module
 {
     const MESSAGE_KEY_RECIPE_ISSUE = 'ontherocks_recipe_issue';
+    const MESSAGE_KEY_RECIPE_APPROVE = 'ontherocks_recipe_approve';
 
     /**
      * Initializes the module.
@@ -85,6 +86,16 @@ class Module extends \yii\base\Module
                 'heading' => 'When someone reports an issue with a recipe:',
                 'subject' => 'Issue reported for {{ recipe.title }}',
                 'body' => file_get_contents(Craft::getAlias('@ontherocks/emails/report.txt')),
+            ]);
+        });
+
+        // register custom system message
+        Event::on(SystemMessages::class, SystemMessages::EVENT_REGISTER_MESSAGES, function(RegisterEmailMessagesEvent $e) {
+            $e->messages[] = new SystemMessage([
+                'key' => self::MESSAGE_KEY_RECIPE_APPROVE,
+                'heading' => 'When someones recipe gets approved:',
+                'subject' => 'your recipe {{ recipe.title }} has been approved!',
+                'body' => file_get_contents(Craft::getAlias('@ontherocks/emails/approve.txt')),
             ]);
         });
 

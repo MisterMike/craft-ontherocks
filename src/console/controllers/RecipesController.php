@@ -7,6 +7,7 @@ use craft\base\Element;
 use craft\elements\Entry;
 use craft\helpers\Console;
 use ontherocks\behaviors\RecipeBehavior;
+use ontherocks\Module;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -62,6 +63,18 @@ class RecipesController extends Controller
             if ($this->confirm('Look good?')) {
                 $recipe->enabled = true;
                 Craft::$app->elements->saveElement($recipe, false);
+                
+                // send email to user
+                $mailer = Craft::$app->getMailer();
+
+                $mailer
+                    ->composeFromKey(Module::MESSAGE_KEY_RECIPE_APPROVE, [
+                        'recipe' => $recipe,
+                    ])
+                    ->setFrom($mailer->from)
+                    ->setTo($recipe->author->email)
+                    ->send();
+
                 $this->stdout(PHP_EOL . '✅ Recipe enabled' . PHP_EOL . PHP_EOL, Console::FG_GREEN);
             }
         }

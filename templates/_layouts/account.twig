@@ -3,10 +3,10 @@
 {% requireLogin %}
 
 {% set accountNav = {
-    profile: { label: 'Profile', url: url('account') },
-    recipes: { label: 'My Recipes', url: url('account/recipes') },
-    email: { label: 'Change Email', url: url('account/email') },
-    password: { label: 'Change Password', url: url('account/password') }
+    profile: { label: '{{"account_myaccount"|t}}', url: url('account') },
+    recipes: { label: '{{"account_myrecipes"|t}}', url: url('account/recipes') },
+    email: { label: '{{"account_change_mail"|t}}', url: url('account/email') },
+    password: { label: '{{"account_changepassword"|t}}', url: url('account/password') }
 } %}
 
 {% set accountPage = accountPage ?? null %}
@@ -15,7 +15,7 @@
     {{ parent() }}
     <div class="border-b border-grey-light">
         <nav id="account-nav" class="container mx-auto md:flex md:items-center md:justify-between md:flex-wrap px-6 py-2">
-            <h2 class="mb-2 md:mb-0 mr-6 font-medium text-lg text-grey-darker tracking-tight">My Account</h2>
+            <h2 class="mb-2 md:mb-0 mr-6 font-medium text-lg text-grey-darker tracking-tight">{{'account_myaccount'|t}}</h2>
             <ul class="md:flex-grow md:flex md:flex-wrap md:items-center list-reset">
                 {% for key, item in accountNav %}
                     {% set borderStyles = key == accountPage
@@ -29,7 +29,7 @@
                     </li>
                 {% endfor %}
             </ul>
-            <a class="nav-item" href="{{ url('logout') }}">Logout</a>
+            <a class="nav-item" href="{{ url('logout') }}">{{'account_logout'|t}}</a>
         </nav>
     </div>
 {% endblock %}

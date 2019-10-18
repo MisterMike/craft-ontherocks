@@ -1,0 +1,8 @@
+Congratulations,
+
+We just approved your recipe [{{ recipe.title }}]({{ recipe.url }}).
+
+---
+
+
+- [Edit recipe]({{ recipe.cpEditUrl }})

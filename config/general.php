@@ -12,7 +12,7 @@ return [
     // Global settings
     '*' => [
         // Default Week Start Day (0 = Sunday, 1 = Monday...)
-        'defaultWeekStartDay' => 0,
+        'defaultWeekStartDay' => 1,
 
         // Enable CSRF Protection (recommended)
         'enableCsrfProtection' => true,
@@ -30,7 +30,7 @@ return [
     // Dev environment settings
     'dev' => [
         // Base site URL
-        'siteUrl' => null,
+        'siteUrl' => ontherocks.test,
 
         // Dev Mode (see https://craftcms.com/support/dev-mode)
         'devMode' => true,
@@ -45,6 +45,6 @@ return [
     // Production environment settings
     'production' => [
         // Base site URL
-        'siteUrl' => null,
+        'siteUrl' => 'http://barkeeper.parhelia.ch',
     ],
 ];

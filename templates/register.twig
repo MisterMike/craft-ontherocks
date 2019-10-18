@@ -5,11 +5,11 @@
 {% endif %}
 
 {% block title -%}
-    Register | {{ parent() }}
+    {{'page_title_register'|t}} | {{ parent() }}
 {%- endblock %}
 
 {% block heading -%}
-    Create an account
+    {{'page_heading_register'|t}}
 {%- endblock %}
 
 {% block form %}
@@ -18,7 +18,7 @@
 
     <div class="mb-6">
         {% include '_includes/text' with {
-            label: 'Username',
+            label: '{{"register_form_username"|t}}',
             name: 'username',
             value: user is defined ? user.username,
             error: user is defined ? user.getFirstError('username')
@@ -35,12 +35,12 @@
     </div>
     <div class="mb-6">
         {% include '_includes/text' with {
-            label: 'Password',
+            label: '{{"register_form_password"|t}}',
             name: 'password',
             type: 'password',
             error: user is defined ? user.getFirstError('password')
         } %}
     </div>
-    <button class="submit-btn" type="submit">Register</button>
+    <button class="submit-btn" type="submit">{{'register_form_submit'|t}}</button>
 {% endblock %}
 

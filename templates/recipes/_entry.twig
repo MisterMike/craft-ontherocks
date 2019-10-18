@@ -78,14 +78,14 @@
             <div class="w-full lg:w-2/5 lg:px-6 text-grey-darker text-sm">
                 <div class="rounded border border-grey mb-8">
                     <div class="glass-type px-4 py-6 flex items-center">
-                        <div class="w-1/2 pr-8 text-right">Serve in</div>
+                        <div class="w-1/2 pr-8 text-right">{{'recipe_serve-in'|t}}</div>
                         <div class="-ml-6 mr-1">
                             {{ svg("@webroot/images/glass-icons/#{entry.glass}.svg")|replace('<svg', '<svg class="w-12 h-12 mr-2 stroke-current text-grey-dark"')|raw }}
                         </div>
                         <span>{{ entry.glass.label }}</span>
                     </div>
                     <div class="border-t border-grey px-4 py-6 flex items-center">
-                        <div class="w-1/2 pr-8 text-right">Submitted by</div>
+                        <div class="w-1/2 pr-8 text-right">{{'recipe_author'|t}}</div>
                         <div class="-ml-6 mr-1">
                             <img src="{{ authorPhotoUrl }}" alt="{{ entry.author.name }}" class="block w-12 h-12 rounded-full shadow mr-2">
                         </div>
@@ -94,13 +94,13 @@
                 </div>
                 <div class="flex flex-wrap -mx-4">
                     <div class="w-1/2 px-4">
-                        <a class="block text-center submit-btn" href="mailto:?subject={{ entry.title|url_encode }}&body={{ "Check out this #{entry.title} recipe I found:\n\n#{entry.url}"|url_encode }}">Share this recipe</a>
+                        <a class="block text-center submit-btn" href="mailto:?subject={{ entry.title|url_encode }}&body={{ "Check out this #{entry.title} recipe I found:\n\n#{entry.url}"|url_encode }}">{{'recipe_share_button'|t}}</a>
                     </div>
                     <div class="w-1/2 px-4">
                         {% if currentUser and entry.authorId == currentUser.id %}
-                            <a class="block text-center btn" href="{{ url('edit', { id: entry.id }) }}">Edit your recipe</a>
+                            <a class="block text-center btn" href="{{ url('edit', { id: entry.id }) }}">{{'recipe_edit_button'|t}}</a>
                         {% else %}
-                            <a class="block text-center btn" href="{{ url('report', { id: entry.id }) }}">Report a problem</a>
+                            <a class="block text-center btn" href="{{ url('report', { id: entry.id }) }}">{{'recipe_report_button'|t}}</a>
                         {% endif %}
                     </div>
                 </div>
